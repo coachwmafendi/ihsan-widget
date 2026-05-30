@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="ms">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ihsan — Platform Sumbangan Digital</title>
+  <meta name="description" content="Ihsan ialah platform sumbangan digital untuk membantu NGO, masjid, surau, tahfiz dan organisasi mengurus kempen derma secara mudah, moden dan dipercayai." />
+
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #0f172a;
+      --muted: #64748b;
+      --primary: #0d9488;
+      --primary-dark: #0f766e;
+      --soft: #ccfbf1;
+      --border: #e2e8f0;
+      --shadow: 0 20px 45px rgba(15, 23, 42, 0.08);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(13, 148, 136, 0.18), transparent 34rem),
+        linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.03em;
+    }
+
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 10px 25px rgba(13, 148, 136, 0.25);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 48px;
+      align-items: center;
+      padding: 56px 0 72px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 22px;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 720px;
+      font-size: clamp(42px, 7vw, 72px);
+      line-height: 0.96;
+      letter-spacing: -0.06em;
+    }
+
+    .lead {
+      margin: 24px 0 0;
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 19px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+      margin-top: 34px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 14px;
+      font-weight: 750;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      box-shadow: 0 12px 24px rgba(13, 148, 136, 0.24);
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      background: #ffffff;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .btn-secondary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.08);
+    }
+
+    .hero-card {
+      position: relative;
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 32px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(16px);
+    }
+
+    .campaign-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 24px;
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.06);
+    }
+
+    .campaign-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: #ecfeff;
+      color: #0e7490;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .amount {
+      font-size: 36px;
+      font-weight: 850;
+      letter-spacing: -0.04em;
+      margin: 4px 0;
+    }
+
+    .progress {
+      height: 12px;
+      background: #e2e8f0;
+      border-radius: 999px;
+      overflow: hidden;
+      margin: 20px 0 10px;
+    }
+
+    .progress span {
+      display: block;
+      height: 100%;
+      width: 68%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, var(--primary), #14b8a6);
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      padding: 14px;
+      border-radius: 18px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    section {
+      padding: 72px 0;
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 34px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: clamp(30px, 4vw, 46px);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+    }
+
+    .section-head p {
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 24px;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.04);
+    }
+
+    .icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 15px;
+      background: var(--soft);
+      color: var(--primary-dark);
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+
+    .feature h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      letter-spacing: -0.03em;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .cta {
+      background: var(--text);
+      color: #ffffff;
+      border-radius: 32px;
+      padding: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 28px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .cta::after {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      right: -90px;
+      top: -90px;
+      border-radius: 999px;
+      background: rgba(20, 184, 166, 0.25);
+    }
+
+    .cta h2 {
+      margin: 0;
+      font-size: clamp(28px, 4vw, 44px);
+      letter-spacing: -0.05em;
+      line-height: 1.05;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta p {
+      color: #cbd5e1;
+      margin: 12px 0 0;
+      max-width: 620px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta .btn {
+      background: #ffffff;
+      color: var(--text);
+      flex: 0 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer {
+      padding: 36px 0;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding-top: 28px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        padding: 18px;
+        border-radius: 24px;
+      }
+
+      .campaign-card {
+        padding: 20px;
+      }
+
+      .actions {
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <nav class="navbar" aria-label="Navigasi utama">
+      <a href="#" class="brand" aria-label="Ihsan">
+        <span class="brand-mark">إ</span>
+        <span>Ihsan</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#tentang">Tentang</a>
+        <a href="#fungsi">Fungsi</a>
+        <a href="#mula">Mula</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div>
+        <div class="eyebrow">Platform sumbangan digital untuk organisasi amanah</div>
+
+        <h1>Urus derma, kempen dan penyumbang dengan lebih mudah.</h1>
+
+        <p class="lead">
+          Ihsan membantu NGO, masjid, surau, tahfiz dan organisasi kebajikan menerima sumbangan secara online,
+          memaparkan kempen dengan cantik, dan memudahkan penyumbang memberi dengan yakin.
+        </p>
+
+        <div class="actions">
+          <a href="#mula" class="btn btn-primary">Mulakan Kempen</a>
+          <a href="#fungsi" class="btn btn-secondary">Lihat Fungsi</a>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Contoh kempen sumbangan">
+        <div class="campaign-card">
+          <div class="campaign-top">
+            <div>
+              <span class="badge">Kempen Aktif</span>
+              <h2 style="margin:14px 0 0;font-size:24px;line-height:1.15;letter-spacing:-0.04em;">
+                Infaq Pembangunan Pusat Al-Quran
+              </h2>
+            </div>
+            <div style="font-size:28px;">🤲</div>
+          </div>
+
+          <p style="color:var(--muted);margin:0;">
+            Sumbangan anda membantu menyediakan ruang pembelajaran Al-Quran yang lebih selesa dan berterusan.
+          </p>
+
+          <div class="progress" aria-label="Kemajuan kutipan">
+            <span></span>
+          </div>
+
+          <div style="display:flex;justify-content:space-between;color:var(--muted);font-size:14px;">
+            <span>RM68,000 terkumpul</span>
+            <span>Sasaran RM100,000</span>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>324</strong>
+              <span>Penyumbang</span>
+            </div>
+            <div class="stat">
+              <strong>68%</strong>
+              <span>Progress</span>
+            </div>
+            <div class="stat">
+              <strong>24j</strong>
+              <span>Akses online</span>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="tentang" class="container">
+      <div class="section-head">
+        <h2>Dibina untuk memudahkan kerja kebaikan.</h2>
+        <p>
+          Ihsan direka supaya organisasi boleh fokus kepada misi utama mereka, manakala sistem membantu dari sudut kempen,
+          bayaran, resit dan rekod penyumbang.
+        </p>
+      </div>
+    </section>
+
+    <section id="fungsi" class="container">
+      <div class="section-head">
+        <h2>Fungsi utama Ihsan</h2>
+        <p>Semua yang diperlukan untuk mula menerima sumbangan secara profesional dan tersusun.</p>
+      </div>
+
+      <div class="grid">
+        <article class="feature">
+          <div class="icon">💳</div>
+          <h3>Bayaran Online</h3>
+          <p>Terima sumbangan melalui kad dan kaedah pembayaran digital dengan pengalaman yang mudah untuk penyumbang.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon">📊</div>
+          <h3>Dashboard Kempen</h3>
+          <p>Pantau jumlah kutipan, progress kempen, transaksi dan aktiviti penyumbang dalam satu paparan yang jelas.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon">🧾</div>
+          <h3>Resit Automatik</h3>
+          <p>Jana dan hantar resit sumbangan secara automatik supaya rekod lebih kemas dan dipercayai.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon">🔗</div>
+          <h3>Link & Embed</h3>
+          <p>Kongsi link kempen atau pasang widget derma di website organisasi dengan mudah.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon">🤝</div>
+          <h3>Portal Penyumbang</h3>
+          <p>Beri pengalaman lebih baik kepada penyumbang untuk melihat rekod sumbangan dan maklumat mereka.</p>
+        </article>
+
+        <article class="feature">
+          <div class="icon">🔒</div>
+          <h3>Amanah & Selamat</h3>
+          <p>Direka dengan pendekatan moden supaya organisasi kelihatan profesional dan penyumbang lebih yakin.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="mula" class="container">
+      <div class="cta">
+        <div>
+          <h2>Sedia untuk bina kempen sumbangan pertama anda?</h2>
+          <p>
+            Gunakan Ihsan untuk memudahkan proses derma online, memperkemas pengurusan penyumbang dan membina kepercayaan.
+          </p>
+        </div>
+        <a href="mailto:hello@ihsan.test" class="btn">Hubungi Kami</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © 2026 Ihsan. Platform sumbangan digital untuk kerja kebaikan.
+    </div>
+  </footer>
+</body>
+</html>
