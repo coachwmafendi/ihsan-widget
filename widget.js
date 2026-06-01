@@ -53,9 +53,7 @@
 
   function checkoutUrl(el, asPopup) {
     var qs = asPopup ? "?popup=1" : "?embed=1";
-    return el.campaign_form_parameter
-      ? baseUrl + "/donate/campaign/" + el.campaign_form_parameter + qs
-      : baseUrl + "/donate/" + el.token + qs;
+    return baseUrl + "/donate/" + el.token + qs;
   }
 
   function handleClick(el) {
@@ -592,9 +590,7 @@
   }
 
   function renderForm(el) {
-    var formUrl = el.campaign_form_parameter
-      ? baseUrl + "/donate/campaign/" + el.campaign_form_parameter + "?embed=1"
-      : baseUrl + "/donate/" + el.token + "?embed=1";
+    var formUrl = baseUrl + "/donate/" + el.token + "?embed=1";
 
     var wrapper = document.createElement("div");
     wrapper.style.cssText = "max-width:100%;";
